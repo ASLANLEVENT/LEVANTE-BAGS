@@ -1,1 +1,1174 @@
+<!DOCTYPE html>
+<html lang="tr">
 
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>LEVANTE | Born in Istanbul</title>
+
+  <meta
+    name="description"
+    content="LEVANTE - Born in Istanbul. Inspired by the Levant breeze."
+  >
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       MENU OVERLAY
+  ========================== -->
+
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+    onclick="closeMenu()"
+  ></div>
+
+
+  <!-- =========================
+       SIDE MENU
+  ========================== -->
+
+  <aside
+    class="side-menu"
+    id="sideMenu"
+    aria-label="Navigation menu"
+  >
+
+    <div class="side-menu-top">
+
+      <a
+        href="#home"
+        class="side-logo-link"
+        onclick="closeMenu()"
+      >
+
+        <img
+          src="images/images/levante-logo.png"
+          alt="LEVANTE Istanbul"
+          class="side-logo-image"
+        >
+
+      </a>
+
+
+      <button
+        class="menu-close"
+        onclick="closeMenu()"
+        aria-label="Close menu"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <nav class="side-nav">
+
+      <a
+        href="#home"
+        onclick="closeMenu()"
+        data-i18n="menuHome"
+      >
+        Ana Sayfa
+      </a>
+
+
+      <a
+        href="#collection"
+        onclick="closeMenu()"
+        data-i18n="menuCollection"
+      >
+        Koleksiyon
+      </a>
+
+
+      <a
+        href="#collection"
+        onclick="closeMenu()"
+        data-i18n="menuBags"
+      >
+        Çantalar
+      </a>
+
+
+      <a
+        href="#story"
+        onclick="closeMenu()"
+        data-i18n="menuStory"
+      >
+        Hikâyemiz
+      </a>
+
+
+      <a
+        href="#contact"
+        onclick="closeMenu()"
+        data-i18n="menuContact"
+      >
+        İletişim
+      </a>
+
+    </nav>
+
+
+    <div class="side-menu-footer">
+
+      <span>
+        Born in Istanbul.
+      </span>
+
+      <span>
+        Inspired by the Levant breeze.
+      </span>
+
+    </div>
+
+  </aside>
+
+
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header id="header">
+
+
+    <div class="header-left">
+
+      <button
+        class="menu-btn"
+        onclick="openMenu()"
+        aria-label="Menu"
+      >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </button>
+
+    </div>
+
+
+
+    <!-- LEVANTE LOGO -->
+
+    <a
+      href="#home"
+      class="brand"
+      aria-label="LEVANTE Home"
+    >
+
+      <img
+        src="images/images/levante-logo.png"
+        alt="LEVANTE Istanbul"
+        class="header-logo-image"
+      >
+
+    </a>
+
+
+
+    <div class="header-right">
+
+
+      <!-- LANGUAGE -->
+
+      <select
+        id="language"
+        class="language-select"
+        onchange="changeLanguage()"
+        aria-label="Language"
+      >
+
+        <option value="tr">
+          TR
+        </option>
+
+        <option value="en">
+          EN
+        </option>
+
+        <option value="ar">
+          عربي
+        </option>
+
+      </select>
+
+
+
+      <!-- CART -->
+
+      <button
+        class="cart-btn"
+        id="cartButton"
+        onclick="openCart()"
+        aria-label="Cart"
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+
+          <path
+            d="M4 7h16l-1.1 13H5.1L4 7Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+
+          <path
+            d="M8 8V6a4 4 0 0 1 8 0v2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+
+        </svg>
+
+
+        <span
+          id="cartCount"
+          class="cart-count"
+        >
+          0
+        </span>
+
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <section
+    class="hero"
+    id="home"
+  >
+
+
+    <div
+      class="slide active"
+      style="background-image:url('images/Levante-01.png');"
+    ></div>
+
+
+    <div
+      class="slide"
+      style="background-image:url('images/Levante-05.png');"
+    ></div>
+
+
+    <div
+      class="slide"
+      style="background-image:url('images/Levante-10.png');"
+    ></div>
+
+
+
+    <div class="hero-shade"></div>
+
+
+
+    <div class="hero-content">
+
+      <div class="hero-text">
+
+
+        <div
+          class="hero-tag"
+          id="heroTag"
+        >
+          İSTANBUL'DA DOĞDU
+        </div>
+
+
+
+        <h1 id="heroTitle">
+
+          Bir çantadan<br>
+          daha fazlası.
+
+        </h1>
+
+
+
+        <p id="heroText">
+
+          Her LEVANTE modeli
+          bir şehirden,
+          bir sokaktan ve
+          bir anıdan ilham alır.
+
+        </p>
+
+
+
+        <a
+          href="#collection"
+          class="primary-btn"
+          id="heroButton"
+        >
+
+          Koleksiyonu Keşfet
+
+          <span>
+            →
+          </span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- HERO DOTS -->
+
+    <div class="slider-dots">
+
+      <button
+        class="dot active"
+        onclick="goToSlide(0)"
+        aria-label="Slide 1"
+      ></button>
+
+
+      <button
+        class="dot"
+        onclick="goToSlide(1)"
+        aria-label="Slide 2"
+      ></button>
+
+
+      <button
+        class="dot"
+        onclick="goToSlide(2)"
+        aria-label="Slide 3"
+      ></button>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       INTRO
+  ========================== -->
+
+  <section class="intro-section">
+
+
+    <div
+      class="section-tag"
+      id="introTag"
+    >
+      LEVANTE DENEYİMİ
+    </div>
+
+
+
+    <h2 id="introTitle">
+
+      Taşıdığın şey sadece
+      bir çanta olmasın.
+
+    </h2>
+
+
+
+    <p id="introText">
+
+      İstanbul'un enerjisi,
+      Akdeniz'in hafifliği ve
+      günlük hayatın özgürlüğü.
+
+    </p>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       COLLECTION
+  ========================== -->
+
+  <section
+    class="collection-section"
+    id="collection"
+  >
+
+
+    <div class="collection-header">
+
+
+      <div>
+
+
+        <div
+          class="section-tag"
+          id="collectionTag"
+        >
+          KOLEKSİYONU KEŞFET
+        </div>
+
+
+
+        <h2 id="collectionTitle">
+
+          Hikâyeni Taşı.
+
+        </h2>
+
+
+      </div>
+
+
+
+      <p id="collectionText">
+
+        Her modelin kendine ait
+        bir karakteri var.
+        Hangisi sana daha yakın?
+
+      </p>
+
+
+    </div>
+
+
+
+    <!-- PRODUCTS -->
+
+    <div
+      class="products-grid"
+      id="productsGrid"
+    ></div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       STORY
+  ========================== -->
+
+  <section
+    class="story-section"
+    id="story"
+  >
+
+
+    <div class="story-content">
+
+
+      <div
+        class="section-tag light"
+        id="storyTag"
+      >
+        LEVANT RÜZGARI
+      </div>
+
+
+
+      <h2 id="storyTitle">
+
+        İstanbul'da doğdu.<br>
+
+        Levant rüzgârından
+        ilham aldı.
+
+      </h2>
+
+
+
+      <p id="storyText">
+
+        LEVANTE,
+        İstanbul'un enerjisini
+        ve Akdeniz'in özgür ruhunu
+        bir araya getirir.
+
+      </p>
+
+
+    </div>
+
+
+
+    <div class="story-side">
+
+
+      <div class="story-number">
+
+        10
+
+        <span id="storyNumberOne">
+
+          İstanbul hikâyesi
+
+        </span>
+
+      </div>
+
+
+
+      <div class="story-number">
+
+        01
+
+        <span id="storyNumberTwo">
+
+          Şehir.
+          Sonsuz ilham.
+
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       FEATURES
+  ========================== -->
+
+  <section
+    class="features-section"
+    id="about"
+  >
+
+
+    <div
+      class="section-tag"
+      id="featuresTag"
+    >
+      NEDEN LEVANTE?
+    </div>
+
+
+
+    <h2 id="featuresTitle">
+
+      Hareket halindeki
+      hayatlar için tasarlandı.
+
+    </h2>
+
+
+
+    <div class="features-grid">
+
+
+      <article class="feature-card">
+
+
+        <div class="feature-number">
+          01
+        </div>
+
+
+        <h3 id="feature1Title">
+
+          Her Çantanın
+          Bir Hikâyesi Var
+
+        </h3>
+
+
+        <p id="feature1Text">
+
+          Her model
+          bir şehirden,
+          bir duygudan ve
+          bir anıdan ilham alır.
+
+        </p>
+
+
+      </article>
+
+
+
+      <article class="feature-card">
+
+
+        <div class="feature-number">
+          02
+        </div>
+
+
+        <h3 id="feature2Title">
+
+          Seninle
+          Hareket Eder
+
+        </h3>
+
+
+        <p id="feature2Text">
+
+          Günlük hayatının
+          ritmine uyum sağlamak
+          için tasarlandı.
+
+        </p>
+
+
+      </article>
+
+
+
+      <article class="feature-card">
+
+
+        <div class="feature-number">
+          03
+        </div>
+
+
+        <h3 id="feature3Title">
+
+          Senin Hikâyen
+
+        </h3>
+
+
+        <p id="feature3Text">
+
+          Sadece bir çanta
+          seçmezsin.
+
+          Sana benzeyen
+          hikâyeyi bulursun.
+
+        </p>
+
+
+      </article>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       CONTACT
+  ========================== -->
+
+  <section
+    class="contact-section"
+    id="contact"
+  >
+
+
+    <div class="contact-copy">
+
+
+      <div
+        class="section-tag"
+        id="contactTag"
+      >
+        İLETİŞİM
+      </div>
+
+
+
+      <h2 id="contactTitle">
+
+        LEVANTE ile
+        iletişime geç.
+
+      </h2>
+
+
+
+      <p id="contactText">
+
+        Koleksiyon,
+        iş birlikleri ve
+        siparişler için
+        bize ulaşabilirsin.
+
+      </p>
+
+
+    </div>
+
+
+
+    <div class="contact-actions">
+
+
+      <a
+        href="https://wa.me/201039812810"
+        target="_blank"
+        rel="noopener"
+        class="contact-card"
+      >
+
+        <span>
+          WhatsApp
+        </span>
+
+        <strong>
+          +20 10 3981 2810
+        </strong>
+
+      </a>
+
+
+
+      <a
+        href="mailto:hello@levanteistanbul.com"
+        class="contact-card"
+      >
+
+        <span>
+          Email
+        </span>
+
+        <strong>
+          hello@levanteistanbul.com
+        </strong>
+
+      </a>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+
+    <div class="footer-brand">
+
+      <img
+        src="images/images/levante-logo.png"
+        alt="LEVANTE Istanbul"
+      >
+
+    </div>
+
+
+
+    <p>
+
+      Born in Istanbul.<br>
+
+      Inspired by the
+      Levant breeze.
+
+    </p>
+
+
+
+    <span>
+
+      © 2026 LEVANTE
+
+    </span>
+
+
+  </footer>
+
+
+
+  <!-- =========================
+       PRODUCT DETAIL MODAL
+  ========================== -->
+
+  <div
+    class="product-modal"
+    id="productModal"
+    aria-hidden="true"
+  >
+
+
+    <div
+      class="product-modal-overlay"
+      onclick="closeProduct()"
+    ></div>
+
+
+
+    <section class="product-detail-panel">
+
+
+      <button
+        class="product-close"
+        onclick="closeProduct()"
+        aria-label="Close product"
+      >
+        ×
+      </button>
+
+
+
+      <div class="product-detail-content">
+
+
+        <!-- PRODUCT GALLERY -->
+
+        <div class="product-gallery">
+
+
+          <div class="product-main-image">
+
+            <img
+              id="detailMainImage"
+              src=""
+              alt=""
+            >
+
+          </div>
+
+
+
+          <div
+            class="product-thumbnails"
+            id="productThumbnails"
+          ></div>
+
+
+        </div>
+
+
+
+        <!-- PRODUCT INFORMATION -->
+
+        <div class="product-detail-info">
+
+
+          <div
+            class="detail-eyebrow"
+            id="detailNumber"
+          ></div>
+
+
+
+          <h2 id="detailName"></h2>
+
+
+
+          <div class="detail-code-row">
+
+            <span id="detailCodeLabel">
+              Ürün Kodu
+            </span>
+
+
+            <strong id="detailCode"></strong>
+
+          </div>
+
+
+
+          <div class="detail-stock">
+
+            <span class="stock-dot"></span>
+
+            <span id="detailStock"></span>
+
+          </div>
+
+
+
+          <div class="detail-section">
+
+
+            <h3 id="detailStoryLabel">
+              Hikâyesi
+            </h3>
+
+
+            <p id="detailStory"></p>
+
+
+          </div>
+
+
+
+          <div class="detail-section">
+
+
+            <h3 id="detailDetailsLabel">
+              Çanta Detayları
+            </h3>
+
+
+            <ul id="detailSpecs"></ul>
+
+
+          </div>
+
+
+
+          <div
+            class="detail-section color-section"
+            id="detailColorsSection"
+          >
+
+
+            <h3 id="detailColorsLabel">
+              Renkler
+            </h3>
+
+
+            <div
+              class="color-options"
+              id="detailColors"
+            ></div>
+
+
+          </div>
+
+
+
+          <div class="detail-actions">
+
+
+            <button
+              class="detail-add-btn"
+              id="detailAddButton"
+            ></button>
+
+
+
+            <button
+              class="detail-buy-btn"
+              id="detailBuyButton"
+            ></button>
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- RECOMMENDATIONS -->
+
+      <div class="recommendations">
+
+
+        <div class="recommendation-heading">
+
+
+          <div>
+
+
+            <div
+              class="section-tag"
+              id="recommendationTag"
+            >
+              BUNLARI DA SEVEBİLİRSİN
+            </div>
+
+
+
+            <h2 id="recommendationTitle">
+
+              Senin için seçtik.
+
+            </h2>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <div
+          class="recommendation-grid"
+          id="recommendationGrid"
+        ></div>
+
+
+      </div>
+
+
+    </section>
+
+
+  </div>
+
+
+
+  <!-- =========================
+       CART OVERLAY
+  ========================== -->
+
+  <div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()"
+  ></div>
+
+
+
+  <!-- =========================
+       CART DRAWER
+  ========================== -->
+
+  <aside
+    class="cart-drawer"
+    id="cartDrawer"
+  >
+
+
+    <div class="cart-header">
+
+
+      <div>
+
+
+        <span
+          class="cart-kicker"
+          id="cartKicker"
+        >
+          LEVANTE
+        </span>
+
+
+
+        <h2 id="cartTitle">
+
+          Çantam
+
+        </h2>
+
+
+      </div>
+
+
+
+      <button
+        class="close-cart"
+        onclick="closeCart()"
+        aria-label="Close cart"
+      >
+        ×
+      </button>
+
+
+    </div>
+
+
+
+    <div
+      class="cart-items"
+      id="cartItems"
+    ></div>
+
+
+
+    <!-- CHECKOUT -->
+
+    <div class="checkout-section">
+
+
+      <h3 id="checkoutTitle">
+
+        Bilgileriniz
+
+      </h3>
+
+
+
+      <input
+        type="text"
+        id="customerName"
+        placeholder="Ad Soyad"
+      >
+
+
+
+      <input
+        type="tel"
+        id="customerPhone"
+        placeholder="Telefon Numarası"
+      >
+
+
+
+      <button
+        class="order-btn"
+        id="whatsappButton"
+        onclick="sendWhatsAppOrder()"
+      >
+
+        Sipariş Talebi Gönder
+
+      </button>
+
+
+    </div>
+
+
+  </aside>
+
+
+
+  <!-- =========================
+       SUPABASE
+  ========================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+  <!-- WEBSITE SCRIPT -->
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>
