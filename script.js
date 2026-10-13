@@ -31,6 +31,10 @@ const EMAILJS_TEMPLATE_ID = "template_lejoqhf";
 ===================================================== */
 
 // Admin yetkisi artık e-postayla değil, veritabanındaki is_admin() ile belirlenir.
+const SITE_ASSETS_BUCKET = "site-assets";
+const SITE_ASSET_PATHS = { logo: "branding/logo", og: "branding/og-image" };
+const SITE_ASSET_KEYS = { logo: "logo_url", og: "og_image_url" };
+let siteSettings = {};
 const PRODUCT_IMAGES_BUCKET = "product-images";
 const HERO_IMAGES_BUCKET = "hero-images";
 
@@ -141,468 +145,8 @@ function formatPrice(price, language) {
    writes to that same table)
 ===================================================== */
 
-let products = [
-
-  {
-    id: 1,
-    number: "01",
-    code: "LV-GLT-01",
-    name: "GALATA STRIPE",
-    price: 2000,
-
-    image: "images/product-lv-glt-01.jpg",
-
-    colors: [
-      {
-        name: "Galata Stripe",
-        hex: "#c7a27b"
-      }
-    ],
-
-    specs: {
-      tr: [
-        "Ayarlanabilir omuz askısı",
-        "Günlük kullanım için hafif yapı",
-        "İç astar ve fermuarlı bölme"
-      ],
-
-      en: [
-        "Adjustable shoulder strap",
-        "Lightweight construction for everyday use",
-        "Inner lining with zip compartment"
-      ],
-
-      ar: [
-        "حزام كتف قابل للتعديل",
-        "تصميم خفيف للاستخدام اليومي",
-        "بطانة داخلية مع جيب بسحاب"
-      ]
-    },
-
-    story: {
-      tr: "Galata'nın zamansız sokaklarından ilham aldı. Geçmişin hikâyesi ile modern stilin buluştuğu, her güne karakter katan bir tasarım.",
-
-      en: "Inspired by the timeless streets of Galata. Where history meets effortless modern style.",
-
-      ar: "مستوحاة من شوارع غلطة الخالدة، حيث تلتقي حكايات الماضي بالأناقة العصرية."
-    }
-  },
-
-
-  {
-    id: 2,
-    number: "02",
-    code: "LV-BSP-02",
-    name: "BOSPHORUS BLUE",
-    price: 1500,
-
-    image: "images/product-lv-bsp-02.jpg",
-
-    colors: [
-      {
-        name: "Bosphorus Blue",
-        hex: "#526f88"
-      }
-    ],
-
-    specs: {
-      tr: [
-        "Ayarlanabilir omuz askısı",
-        "Hafif ve rahat kullanım",
-        "İç astarlı yapı"
-      ],
-
-      en: [
-        "Adjustable shoulder strap",
-        "Lightweight and comfortable",
-        "Fully lined interior"
-      ],
-
-      ar: [
-        "حزام قابل للتعديل",
-        "خفيفة ومريحة",
-        "بطانة داخلية كاملة"
-      ]
-    },
-
-    story: {
-      tr: "Boğaz'ın sakin mavisinden ilham aldı. Akışkan, zarif ve her kombine doğal bir şıklık katan bir model.",
-
-      en: "Inspired by the calm blue of the Bosphorus. Fluid, elegant and effortlessly refined.",
-
-      ar: "مستوحاة من زرقة البوسفور الهادئة. ناعمة وأنيقة وسهلة التنسيق."
-    }
-  },
-
-
-  {
-    id: 3,
-    number: "03",
-    code: "LV-KRK-03",
-    name: "BEŞİKTAŞ BLACK",
-    price: 1500,
-
-    image: "images/product-lv-krk-03.jpg",
-
-    colors: [
-      {
-        name: "Beşiktaş Black",
-        hex: "#262321"
-      }
-    ],
-
-    specs: {
-      tr: [
-        "Ayarlanabilir omuz askısı",
-        "Günlük şehir kullanımı",
-        "İç astarlı yapı"
-      ],
-
-      en: [
-        "Adjustable shoulder strap",
-        "Designed for city life",
-        "Fully lined interior"
-      ],
-
-      ar: [
-        "حزام كتف قابل للتعديل",
-        "مصممة للحياة اليومية في المدينة",
-        "بطانة داخلية"
-      ]
-    },
-
-    story: {
-      tr: "Zamansız siyah, ince çizgileriyle Beşiktaş'tan ilham alıyor. Zahmetsiz, şık ve sonsuza dek klasik.",
-
-      en: "Timeless black with subtle pinstripes, inspired by Beşiktaş. Effortless, chic, and forever classic.",
-
-      ar: "أسود خالد بخطوط دقيقة، مستوحى من بشيكتاش. أنيق بلا مجهود وكلاسيكي إلى الأبد."
-    }
-  },
-
-
-  {
-    id: 4,
-    number: "04",
-    code: "LV-BLT-04",
-    name: "BALAT",
-    price: 1500,
-
-    image: "images/product-lv-blt-04.jpg",
-
-    colors: [
-      {
-        name: "Balat Rose",
-        hex: "#d3a29c"
-      }
-    ],
-
-    specs: {
-      tr: [
-        "Ayarlanabilir askı",
-        "Hafif günlük kullanım",
-        "İç astarlı tasarım"
-      ],
-
-      en: [
-        "Adjustable strap",
-        "Lightweight everyday use",
-        "Lined interior"
-      ],
-
-      ar: [
-        "حزام قابل للتعديل",
-        "خفيفة للاستخدام اليومي",
-        "بطانة داخلية"
-      ]
-    },
-
-    story: {
-      tr: "Balat'ın renkli sokakları ve geçmişten gelen karakterinden ilham aldı.",
-
-      en: "Inspired by the colourful streets and historic character of Balat.",
-
-      ar: "مستوحاة من شوارع بالات الملونة وطابعها التاريخي."
-    }
-  },
-
-
-  {
-    id: 5,
-    number: "05",
-    code: "LV-TSM-05",
-    name: "TAKSIM",
-    price: 1500,
-
-    image: "images/product-lv-tsm-05.jpg",
-
-    colors: [
-      {
-        name: "Taksim Burgundy",
-        hex: "#6b2c34"
-      }
-    ],
-
-    specs: {
-      tr: [
-        "Ayarlanabilir omuz askısı",
-        "Şehir hayatına uygun",
-        "İç astarlı tasarım"
-      ],
-
-      en: [
-        "Adjustable shoulder strap",
-        "Designed for city life",
-        "Lined interior"
-      ],
-
-      ar: [
-        "حزام كتف قابل للتعديل",
-        "مناسبة لحياة المدينة",
-        "بطانة داخلية"
-      ]
-    },
-
-    story: {
-      tr: "Taksim'in hiç durmayan enerjisinden ilham aldı.",
-
-      en: "Inspired by the endless energy of Taksim.",
-
-      ar: "مستوحاة من طاقة تقسيم التي لا تتوقف."
-    }
-  },
-
-
-  {
-    id: 6,
-    number: "06",
-    code: "LV-USK-06",
-    name: "ÜSKÜDAR",
-    price: 1500,
-
-    image: "images/Levante-06.png",
-
-    colors: [
-      {
-        name: "Üsküdar",
-        hex: "#a77d5a"
-      }
-    ],
-
-    specs: {
-      tr: [
-        "Ayarlanabilir omuz askısı",
-        "Hafif kullanım",
-        "İç astarlı yapı"
-      ],
-
-      en: [
-        "Adjustable shoulder strap",
-        "Lightweight construction",
-        "Lined interior"
-      ],
-
-      ar: [
-        "حزام كتف قابل للتعديل",
-        "تصميم خفيف",
-        "بطانة داخلية"
-      ]
-    },
-
-    story: {
-      tr: "Üsküdar'ın sakin, zarif ve zamansız atmosferinden ilham aldı.",
-
-      en: "Inspired by the calm, elegant and timeless atmosphere of Üsküdar.",
-
-      ar: "مستوحاة من أجواء أسكودار الهادئة والأنيقة والخالدة."
-    }
-  },
-
-
-  {
-    id: 7,
-    number: "07",
-    code: "LV-MDN-07",
-    name: "MAIDEN'S TOWER",
-    price: 1500,
-
-    image: "images/Levante-07.png",
-
-    colors: [
-      {
-        name: "Maiden's Tower",
-        hex: "#d1ad82"
-      }
-    ],
-
-    specs: {
-      tr: [
-        "Ayarlanabilir askı",
-        "Hafif ve rahat",
-        "İç astarlı yapı"
-      ],
-
-      en: [
-        "Adjustable strap",
-        "Lightweight and comfortable",
-        "Lined interior"
-      ],
-
-      ar: [
-        "حزام قابل للتعديل",
-        "خفيفة ومريحة",
-        "بطانة داخلية"
-      ]
-    },
-
-    story: {
-      tr: "Kız Kulesi'nin zamansız ve romantik hikâyesinden ilham aldı.",
-
-      en: "Inspired by the timeless and romantic story of Maiden's Tower.",
-
-      ar: "مستوحاة من قصة برج العذراء الخالدة والرومانسية."
-    }
-  },
-
-
-  {
-    id: 8,
-    number: "08",
-    code: "LV-PRK-08",
-    name: "PERA",
-    price: 1500,
-
-    image: "images/Levante-08.png",
-
-    colors: [
-      {
-        name: "Pera",
-        hex: "#9b846f"
-      }
-    ],
-
-    specs: {
-      tr: [
-        "Ayarlanabilir omuz askısı",
-        "Günlük kullanım",
-        "İç astarlı yapı"
-      ],
-
-      en: [
-        "Adjustable shoulder strap",
-        "Everyday use",
-        "Lined interior"
-      ],
-
-      ar: [
-        "حزام كتف قابل للتعديل",
-        "للاستخدام اليومي",
-        "بطانة داخلية"
-      ]
-    },
-
-    story: {
-      tr: "Pera'nın sanat, tarih ve şehir hayatını buluşturan ruhundan ilham aldı.",
-
-      en: "Inspired by Pera's meeting point of art, history and city life.",
-
-      ar: "مستوحاة من روح بيرا التي تجمع بين الفن والتاريخ وحياة المدينة."
-    }
-  },
-
-
-  {
-    id: 9,
-    number: "09",
-    code: "LV-EMN-09",
-    name: "EMİNÖNÜ",
-    price: 1500,
-
-    image: "images/Levante-09.png",
-
-    colors: [
-      {
-        name: "Eminönü",
-        hex: "#b98d67"
-      }
-    ],
-
-    specs: {
-      tr: [
-        "Ayarlanabilir askı",
-        "Hafif şehir kullanımı",
-        "İç astarlı yapı"
-      ],
-
-      en: [
-        "Adjustable strap",
-        "Lightweight city use",
-        "Lined interior"
-      ],
-
-      ar: [
-        "حزام قابل للتعديل",
-        "خفيفة للاستخدام في المدينة",
-        "بطانة داخلية"
-      ]
-    },
-
-    story: {
-      tr: "Eminönü'nün hareketli, canlı ve geleneksel ruhundan ilham aldı.",
-
-      en: "Inspired by the lively and traditional spirit of Eminönü.",
-
-      ar: "مستوحاة من روح أمينونو النابضة بالحياة والتقاليد."
-    }
-  },
-
-
-  {
-    id: 10,
-    number: "10",
-    code: "LV-MID-10",
-    name: "MIDNIGHT ISTANBUL",
-    price: 1500,
-
-    image: "images/Levante-10.png",
-
-    colors: [
-      {
-        name: "Midnight Istanbul",
-        hex: "#1d1d20"
-      }
-    ],
-
-    specs: {
-      tr: [
-        "Ayarlanabilir omuz askısı",
-        "Zarif günlük kullanım",
-        "İç astarlı yapı"
-      ],
-
-      en: [
-        "Adjustable shoulder strap",
-        "Elegant everyday use",
-        "Lined interior"
-      ],
-
-      ar: [
-        "حزام كتف قابل للتعديل",
-        "استخدام يومي أنيق",
-        "بطانة داخلية"
-      ]
-    },
-
-    story: {
-      tr: "İstanbul gecelerinden ilham aldı. Derin, zarif ve gizemli. Günün her saatinde güçlü bir ifade.",
-
-      en: "Inspired by Istanbul nights. Deep, elegant and mysterious. A powerful statement at any hour.",
-
-      ar: "مستوحاة من ليالي إسطنبول. عميقة وأنيقة وغامضة، حضور قوي في كل وقت."
-    }
-  }
-
-];
+// Ürünler Supabase'deki "products" tablosundan yüklenir (Admin Portal > Ürünler).
+let products = [];
 
 
 /* =====================================================
@@ -1268,9 +812,17 @@ function renderProducts(
 
   if (noResultsEl) {
 
+    const comingSoon = {
+      tr: "Koleksiyon çok yakında.",
+      en: "The collection is coming soon.",
+      ar: "المجموعة قريباً."
+    };
+
     noResultsEl.textContent =
       list.length === 0
-        ? text.noResults
+        ? (products.length === 0
+            ? (comingSoon[getLanguage()] || comingSoon.tr)
+            : text.noResults)
         : "";
 
   }
@@ -4049,7 +3601,25 @@ document.addEventListener(
 
     loadHeroSlidesFromSupabase();
 
+    loadSiteSettings();
+
     initAuth();
+
+    const logoInput = document.getElementById("settingsLogoInput");
+    if (logoInput) {
+      logoInput.addEventListener("change", () => {
+        uploadSiteAsset("logo", logoInput.files[0]);
+        logoInput.value = "";
+      });
+    }
+
+    const ogInput = document.getElementById("settingsOgInput");
+    if (ogInput) {
+      ogInput.addEventListener("change", () => {
+        uploadSiteAsset("og", ogInput.files[0]);
+        ogInput.value = "";
+      });
+    }
 
 
     if (
@@ -4474,6 +4044,173 @@ function closeAdminPortal() {
   document.getElementById("adminPortal").classList.remove("active");
 }
 
+/* =====================================================
+   SITE SETTINGS (logo / paylaşım görseli)
+===================================================== */
+
+async function loadSiteSettings() {
+
+  if (!supabaseClient) return;
+
+  const { data, error } = await supabaseClient
+    .from("site_settings")
+    .select("key, value");
+
+  if (error || !data) return;
+
+  siteSettings = {};
+  data.forEach(row => {
+    siteSettings[row.key] = row.value;
+  });
+
+  applySiteLogo();
+  renderAdminSettings();
+}
+
+function applySiteLogo() {
+
+  const url = siteSettings[SITE_ASSET_KEYS.logo] || "";
+
+  document.querySelectorAll("img[data-site-logo]").forEach(img => {
+    if (url) {
+      img.src = url;
+      img.style.display = "";
+    } else {
+      img.removeAttribute("src");
+      img.style.display = "none";
+    }
+  });
+
+  document.querySelectorAll("[data-site-logo-fallback]").forEach(el => {
+    el.style.display = url ? "none" : "";
+  });
+
+  if (url) {
+    let icon = document.querySelector('link[rel="icon"]');
+    if (!icon) {
+      icon = document.createElement("link");
+      icon.rel = "icon";
+      document.head.appendChild(icon);
+    }
+    icon.removeAttribute("type");
+    icon.removeAttribute("sizes");
+    icon.href = url;
+  }
+}
+
+function renderAdminSettings() {
+
+  [["logo", "settingsLogo"], ["og", "settingsOg"]].forEach(([kind, prefix]) => {
+
+    const url = siteSettings[SITE_ASSET_KEYS[kind]] || "";
+    const preview = document.getElementById(prefix + "Preview");
+    const status = document.getElementById(prefix + "Status");
+    const removeBtn = document.getElementById(prefix + "Remove");
+
+    if (preview) {
+      if (url) {
+        preview.src = url;
+        preview.style.display = "";
+      } else {
+        preview.removeAttribute("src");
+        preview.style.display = "none";
+      }
+    }
+
+    if (status) status.textContent = url ? "Yüklü ✓" : "Henüz yüklenmedi.";
+    if (removeBtn) removeBtn.style.display = url ? "" : "none";
+  });
+}
+
+function showSettingsMessage(message) {
+  const el = document.getElementById("settingsMessage");
+  if (el) el.textContent = message || "";
+}
+
+async function uploadSiteAsset(kind, file) {
+
+  if (!supabaseClient || !isAdmin || !file) return;
+
+  const allowed = ["image/png", "image/jpeg", "image/webp"];
+
+  if (!allowed.includes(file.type)) {
+    showSettingsMessage("Sadece PNG, JPG veya WebP yükleyebilirsin.");
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    showSettingsMessage("Dosya 5 MB'tan büyük. Lütfen küçültüp tekrar dene.");
+    return;
+  }
+
+  showSettingsMessage("Yükleniyor...");
+
+  const path = SITE_ASSET_PATHS[kind];
+
+  const { error: uploadError } = await supabaseClient.storage
+    .from(SITE_ASSETS_BUCKET)
+    .upload(path, file, {
+      upsert: true,
+      contentType: file.type,
+      cacheControl: "300"
+    });
+
+  if (uploadError) {
+    showSettingsMessage("Yüklenemedi: " + uploadError.message);
+    return;
+  }
+
+  const { data } = supabaseClient.storage
+    .from(SITE_ASSETS_BUCKET)
+    .getPublicUrl(path);
+
+  const { error: saveError } = await supabaseClient
+    .from("site_settings")
+    .upsert({
+      key: SITE_ASSET_KEYS[kind],
+      value: data.publicUrl + "?v=" + Date.now(),
+      updated_at: new Date().toISOString()
+    }, { onConflict: "key" });
+
+  if (saveError) {
+    showSettingsMessage("Kaydedilemedi: " + saveError.message);
+    return;
+  }
+
+  showSettingsMessage("Kaydedildi ✓");
+  await loadSiteSettings();
+}
+
+async function removeSiteAsset(kind) {
+
+  if (!supabaseClient || !isAdmin) return;
+
+  if (!confirm("Bu görsel kaldırılsın mı?")) return;
+
+  await supabaseClient.storage
+    .from(SITE_ASSETS_BUCKET)
+    .remove([SITE_ASSET_PATHS[kind]]);
+
+  const { error } = await supabaseClient
+    .from("site_settings")
+    .delete()
+    .eq("key", SITE_ASSET_KEYS[kind]);
+
+  if (error) {
+    showSettingsMessage("Kaldırılamadı: " + error.message);
+    return;
+  }
+
+  showSettingsMessage("Kaldırıldı.");
+  await loadSiteSettings();
+  if (!siteSettings[SITE_ASSET_KEYS[kind]]) {
+    delete siteSettings[SITE_ASSET_KEYS[kind]];
+    applySiteLogo();
+    renderAdminSettings();
+  }
+}
+
+
 function switchAdminTab(tab) {
 
   currentAdminTab = tab;
@@ -4486,6 +4223,8 @@ function switchAdminTab(tab) {
     .classList.toggle("active", tab === "analytics");
   document.getElementById("adminTabHero")
     .classList.toggle("active", tab === "hero");
+  document.getElementById("adminTabSettings")
+    .classList.toggle("active", tab === "settings");
 
   document.getElementById("adminPanelUsers")
     .classList.toggle("active", tab === "users");
@@ -4495,6 +4234,8 @@ function switchAdminTab(tab) {
     .classList.toggle("active", tab === "analytics");
   document.getElementById("adminPanelHero")
     .classList.toggle("active", tab === "hero");
+  document.getElementById("adminPanelSettings")
+    .classList.toggle("active", tab === "settings");
 
   if (tab === "users") {
     loadUsersForAdmin();
@@ -4504,6 +4245,8 @@ function switchAdminTab(tab) {
     loadAnalytics();
   } else if (tab === "hero") {
     loadAdminHeroSlides();
+  } else if (tab === "settings") {
+    loadSiteSettings();
   }
 }
 
@@ -5024,7 +4767,7 @@ function renderAdminProductsList() {
 
   let html = "";
 
-  if (!productsAreFromDatabase) {
+  if (!productsAreFromDatabase && products.length > 0) {
     html += `
       <div class="admin-seed-note">
         <p>
