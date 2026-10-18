@@ -3450,7 +3450,7 @@ function renderAdminHeroList() {
             <button ${index === adminHeroRows.length - 1 ? "disabled" : ""} onclick="moveHeroSlide(${row.id}, 1)" title="Aşağı">↓</button>
           </div>
           <div class="ahr-spacer"></div>
-          <button class="apr-edit" onclick="deleteHeroSlide(${row.id}, ${JSON.stringify(row.path || "")})">Sil</button>
+          <button class="apr-edit" onclick="deleteHeroSlide(${row.id})">Sil</button>
         </div>
       `
     )
@@ -3508,9 +3508,12 @@ async function uploadHeroSlides(files) {
 
 }
 
-async function deleteHeroSlide(id, path) {
+async function deleteHeroSlide(id) {
 
   if (!supabaseClient || !isAdmin) return;
+
+  const row = adminHeroRows.find(r => String(r.id) === String(id));
+  const path = row ? row.path : "";
 
   const confirmed = confirm("Bu görsel slider'dan kaldırılsın mı?");
   if (!confirmed) return;
